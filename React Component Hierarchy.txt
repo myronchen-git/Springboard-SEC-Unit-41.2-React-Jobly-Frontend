@@ -1,0 +1,77 @@
+App
+- General page wrapper
+states: user, applications
+effects: gets user info on initial render.
+
+    NavBar
+    - Navigation for different pages.  Displays links to Login and SignUp pages
+    if not logged in.  Displays companies, jobs, and profile links if logged in.
+    props: isLoggedIn
+
+    HomePage
+    - The homepage.  Displays links to Login and SignUp pages if not logged in.
+    Displays welcome message if logged in.
+    props: isLoggedIn
+
+    Login
+    - Allows a user to log in.
+    props: setUser, setApplications
+    states: formData
+    functions: handleChange, handleSubmit
+
+    SignUp
+    - Allows someone to create an account.
+    props: setUser
+    states: formData
+    functions: handleChange, handleSubmit
+
+    CompaniesPage
+    - Lists all companies.
+    states: companies
+    effects: gets all companies on initial render.
+    functions: retrieveCompanies
+
+        SearchBar
+        - Filters items by name.
+        props: retrieveItems (retrieveCompanies)
+        states: formData
+        functions: handleChange, handleSubmit
+
+        CompanyCard
+        - Displays company name, description, and logo.
+        props: company
+
+    CompanyPage
+    - Displays company name, description, and list of job openings.
+    props: applications
+    states: company, jobs
+    effects: gets info about the company on initial render.
+
+        JobCard
+        - A job opening with details.
+        props: job, isApplied,
+        context: setApplications
+
+    JobsPage
+    - Lists all job openings.
+    props: applications
+    states: jobs
+    effects: gets all jobs on initial render.
+    functions: retrieveJobs
+
+        SearchBar
+        - Filters items by name.
+        props: retrieveItems (retrieveJobs)
+        states: formData
+        functions: handleChange, handleSubmit
+
+        JobCard
+        - A job opening with details.
+        props: job, isApplied,
+        context: setApplications
+
+    Profile
+    - A user's profile.
+    props: user, setUser
+    states: formData
+    functions: handleChange, handleSubmit
