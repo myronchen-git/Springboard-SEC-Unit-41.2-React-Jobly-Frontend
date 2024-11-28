@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompanyPage > matches snapshot. 1`] = `
+<DocumentFragment>
+  <main
+    class="CompanyPage"
+  >
+    <section
+      class="CompanyPage__info"
+    >
+      <header>
+        <img
+          alt="Company 1 Logo"
+          src="logo1.png"
+        />
+        <h1>
+          Company 1
+        </h1>
+      </header>
+      <p>
+        12 employees
+      </p>
+      <p>
+        Company 1 description.
+      </p>
+    </section>
+    <ul
+      class="CompanyPage__jobs"
+    >
+      <li>
+        <p>
+          Job 1
+        </p>
+      </li>
+      <li>
+        <p>
+          Job 2
+        </p>
+      </li>
+    </ul>
+  </main>
+</DocumentFragment>
+`;

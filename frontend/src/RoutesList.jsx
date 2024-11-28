@@ -20,7 +20,7 @@ function RoutesList() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/companies">
         <Route index element={<CompaniesPage />} />
-        <Route path=":handle" element={<CompanyPage />} />
+        <Route path=":handle" element={<CompanyPage applications={[]} />} />
         <Route path="*" element={<NotFound resourceName="Company " />} />
       </Route>
       <Route path="/jobs" element={<JobsPage />} />
