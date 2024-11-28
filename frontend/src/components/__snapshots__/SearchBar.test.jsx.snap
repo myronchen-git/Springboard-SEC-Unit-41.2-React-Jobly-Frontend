@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompanyCard > matches snapshot. 1`] = `
+<DocumentFragment>
+  bound HTMLFormElement {
+    "0": <input
+      name="name"
+      placeholder="Enter search term..."
+      type="search"
+      value=""
+    />,
+    "1": <button
+      type="submit"
+    >
+      Submit
+    </button>,
+  }
+</DocumentFragment>
+`;
