@@ -99,11 +99,13 @@ class JoblyApi {
   /**
    * Gets all jobs.
    *
+   * @param {Object} filters - Query parameters for filtering list of jobs.
+   *   Currently, they are title, minSalary, and hasEquity.
    * @returns {Array}
    * [ { id, title, salary, equity, companyHandle, companyName }, ...].
    */
-  static async getJobs() {
-    const res = await this.request(`jobs`);
+  static async getJobs(filters = {}) {
+    const res = await this.request(`jobs`, filters);
     return res.jobs;
   }
 

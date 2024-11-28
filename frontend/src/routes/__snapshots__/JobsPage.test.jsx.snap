@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`JobsPage > matches snapshot. 1`] = `
+<DocumentFragment>
+  <main
+    class="JobsPage"
+  >
+    bound HTMLFormElement {
+      "0": <input
+        name="title"
+        placeholder="Enter search term..."
+        type="search"
+        value=""
+      />,
+      "1": <button
+        type="submit"
+      >
+        Submit
+      </button>,
+    }
+    <ul>
+      <li>
+        <article
+          class="JobCard"
+        >
+          <header
+            class="JobCard__header"
+          >
+            <h1>
+              Job 1
+            </h1>
+            <p>
+              Company 1
+            </p>
+          </header>
+          <summary
+            class="JobCard__info"
+          >
+            <p>
+              Salary: 1
+            </p>
+            <p>
+              Equity: 0.1
+            </p>
+          </summary>
+          bound HTMLFormElement {
+            "0": <button
+              type="button"
+            >
+              Apply
+            </button>,
+          }
+        </article>
+      </li>
+      <li>
+        <article
+          class="JobCard"
+        >
+          <header
+            class="JobCard__header"
+          >
+            <h1>
+              Job 2
+            </h1>
+            <p>
+              Company 1
+            </p>
+          </header>
+          <summary
+            class="JobCard__info"
+          >
+            <p>
+              Salary: 2
+            </p>
+            <p>
+              Equity: 0.2
+            </p>
+          </summary>
+          bound HTMLFormElement {
+            "0": <button
+              type="button"
+            >
+              Apply
+            </button>,
+          }
+        </article>
+      </li>
+    </ul>
+  </main>
+</DocumentFragment>
+`;
