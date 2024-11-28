@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`JobCard > matches snapshot. 1`] = `
+<DocumentFragment>
+  <article
+    class="JobCard"
+  >
+    <header
+      class="JobCard__header"
+    >
+      <h1>
+        Job 1
+      </h1>
+      <p>
+        Company 1
+      </p>
+    </header>
+    <summary
+      class="JobCard__info"
+    >
+      <p>
+        Salary: 1
+      </p>
+      <p>
+        Equity: 0.1
+      </p>
+    </summary>
+    bound HTMLFormElement {
+      "0": <button
+        type="button"
+      >
+        Apply
+      </button>,
+    }
+  </article>
+</DocumentFragment>
+`;
