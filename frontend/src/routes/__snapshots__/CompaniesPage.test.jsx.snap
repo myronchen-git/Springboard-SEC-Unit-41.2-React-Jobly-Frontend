@@ -1,0 +1,129 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompaniesPage > matches snapshot. 1`] = `
+<DocumentFragment>
+  <main
+    class="CompaniesPage"
+  >
+    bound HTMLFormElement {
+      "0": <input
+        name="name"
+        placeholder="Enter search term..."
+        type="search"
+        value=""
+      />,
+      "1": <button
+        type="submit"
+      >
+        Submit
+      </button>,
+    }
+    <ul>
+      <li>
+        <article
+          class="CompanyCard"
+        >
+          <header
+            class="CompanyCard__header"
+          >
+            <img
+              alt="Company 1 Logo"
+              src="logo1.png"
+            />
+            <h1>
+              Company 1
+            </h1>
+          </header>
+          <summary
+            class="CompanyCard__info"
+          >
+            <p>
+              12 employees
+            </p>
+            <p>
+              Company 1 description.
+            </p>
+          </summary>
+        </article>
+      </li>
+      <li>
+        <article
+          class="CompanyCard"
+        >
+          <header
+            class="CompanyCard__header"
+          >
+            <img
+              alt="Company 2 Logo"
+              src="logo2.png"
+            />
+            <h1>
+              Company 2
+            </h1>
+          </header>
+          <summary
+            class="CompanyCard__info"
+          >
+            <p>
+              123 employees
+            </p>
+            <p>
+              Company 2 description.
+            </p>
+          </summary>
+        </article>
+      </li>
+      <li>
+        <article
+          class="CompanyCard"
+        >
+          <header
+            class="CompanyCard__header"
+          >
+            <img
+              alt="Company 3 Logo"
+            />
+            <h1>
+              Company 3
+            </h1>
+          </header>
+          <summary
+            class="CompanyCard__info"
+          >
+            <p>
+              3 employees
+            </p>
+            <p>
+              Company 3 description.
+            </p>
+          </summary>
+        </article>
+      </li>
+      <li>
+        <article
+          class="CompanyCard"
+        >
+          <header
+            class="CompanyCard__header"
+          >
+            <img
+              alt="Company 4 Logo"
+              src="logo4.png"
+            />
+            <h1>
+              Company 4
+            </h1>
+          </header>
+          <summary
+            class="CompanyCard__info"
+          >
+            <p>
+              Company 4 description.
+            </p>
+          </summary>
+        </article>
+      </li>
+    </ul>
+  </main>
+</DocumentFragment>
+`;
