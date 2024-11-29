@@ -12,7 +12,7 @@ functions: logout
     HomePage
     - The homepage.  Displays links to Login and SignUp pages if not logged in.
     Displays welcome message if logged in.
-    props: isLoggedIn
+    props: username
 
     Login
     - Allows a user to log in.

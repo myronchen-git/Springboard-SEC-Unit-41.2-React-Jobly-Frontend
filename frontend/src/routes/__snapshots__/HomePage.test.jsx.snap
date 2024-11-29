@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompanyPage > matches snapshot. 1`] = `
+<DocumentFragment>
+  <main>
+    <h1>
+      Jobly
+    </h1>
+    <p>
+      All the jobs in one, convenient place.
+    </p>
+    <div>
+      <p>
+        Welcome Back, testuser!
+      </p>
+    </div>
+  </main>
+</DocumentFragment>
+`;
