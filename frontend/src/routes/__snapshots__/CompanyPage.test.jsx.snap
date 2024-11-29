@@ -28,14 +28,65 @@ exports[`CompanyPage > matches snapshot. 1`] = `
       class="CompanyPage__jobs"
     >
       <li>
-        <p>
-          Job 1
-        </p>
+        <article
+          class="JobCard"
+        >
+          <header
+            class="JobCard__header"
+          >
+            <h1>
+              Job 1
+            </h1>
+          </header>
+          <summary
+            class="JobCard__info"
+          >
+            <p>
+              Salary: 1
+            </p>
+            <p>
+              Equity: 0.1
+            </p>
+          </summary>
+          bound HTMLFormElement {
+            "0": <button
+              type="button"
+            >
+              Apply
+            </button>,
+          }
+        </article>
       </li>
       <li>
-        <p>
-          Job 2
-        </p>
+        <article
+          class="JobCard"
+        >
+          <header
+            class="JobCard__header"
+          >
+            <h1>
+              Job 2
+            </h1>
+          </header>
+          <summary
+            class="JobCard__info"
+          >
+            <p>
+              Salary: 2
+            </p>
+            <p>
+              Equity: 0.2
+            </p>
+          </summary>
+          bound HTMLFormElement {
+            "0": <button
+              disabled=""
+              type="button"
+            >
+              Applied
+            </button>,
+          }
+        </article>
       </li>
     </ul>
   </main>

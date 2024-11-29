@@ -22,7 +22,7 @@ vi.mock(import('../../../api'), () => {
 // ==================================================
 
 describe('CompanyPage', () => {
-  const applications = Object.freeze([2, 3]);
+  const applications = Object.freeze(['2', '3']);
 
   beforeEach(() => {
     useParams.mockReturnValue({ handle: companyDetails.handle });
@@ -55,5 +55,19 @@ describe('CompanyPage', () => {
     companyDetails.jobs.forEach((job) => {
       expect(getByText(job.title)).toBeVisible();
     });
+  });
+
+  it('displays the correct apply button status.', async () => {
+    // Act
+    const { getAllByText } = await act(async () =>
+      render(<CompanyPage applications={applications} />)
+    );
+
+    // Assert
+    // Fragile!
+    const applybtns = getAllByText('Appl', { exact: false });
+
+    expect(applybtns[0]).toHaveTextContent('Apply');
+    expect(applybtns[1]).toHaveTextContent('Applied');
   });
 });

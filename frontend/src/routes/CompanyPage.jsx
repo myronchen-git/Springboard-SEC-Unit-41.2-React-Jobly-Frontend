@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import JoblyApi from '../../../api';
+import JobCard from '../components/JobCard.jsx';
 
 // ==================================================
 
@@ -38,7 +39,7 @@ function CompanyPage({ applications }) {
       <ul className="CompanyPage__jobs">
         {jobs.map((job) => (
           <li key={job.id}>
-            <p>{job.title}</p>
+            <JobCard job={job} isApplied={applications.includes(job.id)} />
           </li>
         ))}
       </ul>
