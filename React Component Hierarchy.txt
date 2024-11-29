@@ -2,11 +2,12 @@ App
 - General page wrapper
 states: authToken, user, applications
 effects: gets user info on initial render.
+functions: logout
 
     NavBar
     - Navigation for different pages.  Displays links to Login and SignUp pages
     if not logged in.  Displays companies, jobs, and profile links if logged in.
-    props: isLoggedIn
+    props: username, logout
 
     HomePage
     - The homepage.  Displays links to Login and SignUp pages if not logged in.

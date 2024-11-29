@@ -1,13 +1,21 @@
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 // ==================================================
 
-function NavBar({ isLoggedIn = false }) {
+/**
+ * Displays the navigation bar.
+ *
+ * @param {Object} props - React component properties.
+ * @param {String} props.username - Username of the logged in user, otherwise
+ *   falsy.
+ * @param {Function} props.logout - Logs out the current user.
+ */
+function NavBar({ username, logout }) {
   return (
     <nav className="NavBar">
       <NavLink to="/">Home</NavLink>
-      {isLoggedIn ? (
+      {username ? (
         <>
           <NavLink to="/companies" end>
             Companies
@@ -16,6 +24,9 @@ function NavBar({ isLoggedIn = false }) {
             Jobs
           </NavLink>
           <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/" onClick={logout}>
+            Logout {username}
+          </NavLink>
         </>
       ) : (
         <>
@@ -30,7 +41,8 @@ function NavBar({ isLoggedIn = false }) {
 // ==================================================
 
 NavBar.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  username: PropTypes.string,
+  logout: PropTypes.func.isRequired,
 };
 
 export default NavBar;
