@@ -1,6 +1,6 @@
 App
 - General page wrapper
-states: user, applications
+states: authToken, user, applications
 effects: gets user info on initial render.
 
     NavBar
@@ -21,7 +21,7 @@ effects: gets user info on initial render.
 
     SignUp
     - Allows someone to create an account.
-    props: setUser
+    props: signup
     states: formData
     functions: handleChange, handleSubmit
 

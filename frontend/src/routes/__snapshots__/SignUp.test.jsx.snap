@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SignUp > matches snapshot. 1`] = `
+<DocumentFragment>
+  <main
+    class="SignUp"
+  >
+    <header>
+      <h1>
+        Sign Up
+      </h1>
+    </header>
+    bound HTMLFormElement {
+      "0": <input
+        id="SignUp__input-username"
+        name="username"
+        required=""
+        type="text"
+        value=""
+      />,
+      "1": <input
+        id="SignUp__input-password"
+        name="password"
+        required=""
+        type="password"
+        value=""
+      />,
+      "2": <input
+        id="SignUp__input-firstName"
+        name="firstName"
+        required=""
+        type="text"
+        value=""
+      />,
+      "3": <input
+        id="SignUp__input-lastName"
+        name="lastName"
+        required=""
+        type="text"
+        value=""
+      />,
+      "4": <input
+        id="SignUp__input-email"
+        name="email"
+        required=""
+        type="email"
+        value=""
+      />,
+      "5": <button
+        type="submit"
+      >
+        Submit
+      </button>,
+    }
+  </main>
+</DocumentFragment>
+`;

@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <NavBar isLoggedIn={true} />
+      <NavBar isLoggedIn={false} />
       <RoutesList />
     </div>
   );
