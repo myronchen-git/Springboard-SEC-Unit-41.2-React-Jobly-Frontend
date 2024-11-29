@@ -15,7 +15,7 @@ effects: gets user info on initial render.
 
     Login
     - Allows a user to log in.
-    props: setUser, setApplications
+    props: login
     states: formData
     functions: handleChange, handleSubmit
 
