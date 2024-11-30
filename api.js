@@ -126,8 +126,8 @@ class JoblyApi {
    *
    * @param {String} username - The username of the account to get.
    * @returns {Object}
-   * { username, first_name, last_name, is_admin, jobs }
-   * where jobs is [ id, ... ].
+   * { username, first_name, last_name, is_admin, applications }
+   * where applications is [ id, ... ].
    */
   static async getUser(username) {
     const res = await this.request(`users/${username}`);
