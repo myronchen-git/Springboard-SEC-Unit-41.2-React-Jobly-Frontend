@@ -7,7 +7,14 @@ import { describe, expect, it, vi } from 'vitest';
 import JoblyApi from '../../api';
 import App from './App.jsx';
 
-import { authToken, userData, userInfo } from './_testCommon.js';
+import {
+  authToken,
+  companies,
+  companyDetails,
+  jobs,
+  userData,
+  userInfo,
+} from './_testCommon.js';
 
 // ==================================================
 
@@ -152,4 +159,181 @@ describe('App', () => {
     // Assert
     expect(await findByText('Log In', { exact: false })).toBeVisible();
   });
+
+  it('allows filtering companies.', async () => {
+    // Arrange
+    const companyIndexToFilter = 1;
+
+    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.getCompanies = vi.fn((filters) => {
+      if (filters.name) {
+        return Promise.resolve(
+          companies.filter((company) =>
+            company.name.toLowerCase().includes(filters.name.toLowerCase())
+          )
+        );
+      } else {
+        return Promise.resolve(companies);
+      }
+    });
+
+    const user = userEvent.setup();
+
+    const {
+      findByText,
+      getAllByText,
+      getByLabelText,
+      getByPlaceholderText,
+      getByText,
+      queryByText,
+    } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    await user.click(getAllByText('Log In')[0]);
+
+    await user.type(getByLabelText('Username'), userInfo.username);
+    await user.type(getByLabelText('Password'), userInfo.password);
+    await user.click(getByText('Submit'));
+
+    await user.click(await findByText('Companies'));
+
+    for (const company of companies) {
+      expect(await findByText(company.name)).toBeVisible();
+    }
+
+    // Act
+    const searchInput = getByPlaceholderText('Enter search term...');
+    const submitBtn = getByText('Submit');
+
+    await user.type(searchInput, companies[companyIndexToFilter].name);
+    await user.click(submitBtn);
+
+    // Assert
+    expect(
+      await findByText(companies[companyIndexToFilter].name)
+    ).toBeVisible();
+
+    for (let i = 0; i < companies.length; i++) {
+      if (i !== companyIndexToFilter) {
+        expect(queryByText(companies[i].name)).not.toBeInTheDocument();
+      }
+    }
+  });
+
+  it('displays a specific company and its job openings.', async () => {
+    // Arrange
+    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.getCompanies = vi.fn(() => Promise.resolve(companies));
+    JoblyApi.getCompany = vi.fn(() =>
+      Promise.resolve(structuredClone(companyDetails))
+    );
+
+    const user = userEvent.setup();
+
+    const { findByText, getAllByText, getByLabelText, getByText } = await act(
+      async () =>
+        render(
+          <MemoryRouter initialEntries={['/']}>
+            <App />
+          </MemoryRouter>
+        )
+    );
+
+    await user.click(getAllByText('Log In')[0]);
+
+    await user.type(getByLabelText('Username'), userInfo.username);
+    await user.type(getByLabelText('Password'), userInfo.password);
+    await user.click(getByText('Submit'));
+
+    // Act
+    await user.click(await findByText('Companies'));
+
+    await user.click(await findByText(companies[0].name));
+
+    // Assert
+    expect(await findByText(companyDetails.name)).toBeVisible();
+
+    for (const job of companyDetails.jobs) {
+      expect(await findByText(job.title)).toBeVisible();
+    }
+  });
+
+  it.todo("allows a user to apply for a job from a company's job openings.");
+
+  it('allows filtering job openings.', async () => {
+    // Arrange
+    const jobIndexToFilter = 1;
+
+    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.getJobs = vi.fn((filters) => {
+      if (filters.title) {
+        return Promise.resolve(
+          jobs.filter((job) =>
+            job.title.toLowerCase().includes(filters.title.toLowerCase())
+          )
+        );
+      } else {
+        return Promise.resolve(jobs);
+      }
+    });
+
+    const user = userEvent.setup();
+
+    const {
+      findByText,
+      getAllByText,
+      getByLabelText,
+      getByPlaceholderText,
+      getByText,
+      queryByText,
+    } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    await user.click(getAllByText('Log In')[0]);
+
+    await user.type(getByLabelText('Username'), userInfo.username);
+    await user.type(getByLabelText('Password'), userInfo.password);
+    await user.click(getByText('Submit'));
+
+    await user.click(await findByText('Jobs'));
+
+    for (const job of jobs) {
+      expect(await findByText(job.title)).toBeVisible();
+    }
+
+    // Act
+    const searchInput = getByPlaceholderText('Enter search term...');
+    const submitBtn = getByText('Submit');
+
+    await user.type(searchInput, jobs[jobIndexToFilter].title);
+    await user.click(submitBtn);
+
+    // Assert
+    expect(await findByText(jobs[jobIndexToFilter].title)).toBeVisible();
+
+    for (let i = 0; i < jobs.length; i++) {
+      if (i !== jobIndexToFilter) {
+        expect(queryByText(jobs[i].title)).not.toBeInTheDocument();
+      }
+    }
+  });
+
+  it.todo(
+    'allows a user to apply for a job from the list of all job openings.'
+  );
+
+  it.todo("allows updating the user's profile.");
 });
