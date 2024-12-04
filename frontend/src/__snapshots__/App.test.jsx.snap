@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > matches snapshot. 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <nav
+      class="NavBar"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        data-discover="true"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class=""
+        data-discover="true"
+        href="/login"
+      >
+        Login
+      </a>
+      <a
+        class=""
+        data-discover="true"
+        href="/signup"
+      >
+        Sign Up
+      </a>
+    </nav>
+    <main>
+      <h1>
+        Jobly
+      </h1>
+      <p>
+        All the jobs in one, convenient place.
+      </p>
+      <div>
+        <a
+          data-discover="true"
+          href="/login"
+        >
+          <button
+            type="button"
+          >
+            Log In
+          </button>
+        </a>
+        <a
+          data-discover="true"
+          href="/signup"
+        >
+          <button
+            type="button"
+          >
+            Sign Up
+          </button>
+        </a>
+      </div>
+    </main>
+  </div>
+</DocumentFragment>
+`;

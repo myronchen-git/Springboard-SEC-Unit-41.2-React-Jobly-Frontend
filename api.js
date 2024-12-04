@@ -23,7 +23,7 @@ BASE_URL ||= 'http://localhost:3001';
 
 class JoblyApi {
   // The token for interacting with the API will be stored here.
-  static token;
+  static token = null;
 
   static async request(endpoint, data = {}, method = 'get') {
     console.debug('API Call:', endpoint, data, method);
@@ -56,6 +56,7 @@ class JoblyApi {
    */
   static async registerUser(user) {
     const res = await this.request('auth/register', user, 'post');
+    JoblyApi.token = res.token;
     return res.token;
   }
 
@@ -67,6 +68,7 @@ class JoblyApi {
    */
   static async loginUser(userAndPass) {
     const res = await this.request('auth/token', userAndPass, 'post');
+    JoblyApi.token = res.token;
     return res.token;
   }
 
@@ -126,7 +128,7 @@ class JoblyApi {
    *
    * @param {String} username - The username of the account to get.
    * @returns {Object}
-   * { username, first_name, last_name, is_admin, applications }
+   * { username, firstName, lastName, isAdmin, applications }
    * where applications is [ id, ... ].
    */
   static async getUser(username) {
@@ -163,14 +165,6 @@ class JoblyApi {
     return res.applied;
   }
 }
-
-// ==================================================
-
-// for now, put token ("testuser" / "password" on class)
-JoblyApi.token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ' +
-  'SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.' +
-  'FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc';
 
 // ==================================================
 

@@ -63,6 +63,31 @@ const companyDetails = Object.freeze({
   jobs: Object.freeze(comp1Jobs),
 });
 
+const userInfo = Object.freeze({
+  username: 'testuser',
+  password: 'password',
+  firstName: 'First',
+  lastName: 'Last',
+  email: 'email@email.com',
+});
+
+// For JoblyApi.getUser().
+// This is the response data from the API call to GET /users/:username .
+const userData = Object.freeze({
+  username: userInfo.username,
+  firstName: userInfo.firstName,
+  lastName: userInfo.lastName,
+  isAdmin: false,
+  applications: Object.freeze([]),
+});
+
+// Ensure authentication token has payload with keys username and isAdmin.
+// This authToken corresponds to { username: 'testuser', isAdmin: false }.
+const authToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ' +
+  'SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.' +
+  'FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc';
+
 // ==================================================
 
-export { companies, companyDetails, jobs };
+export { authToken, companies, companyDetails, jobs, userData, userInfo };
