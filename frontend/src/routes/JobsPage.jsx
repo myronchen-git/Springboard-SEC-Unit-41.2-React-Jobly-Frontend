@@ -11,25 +11,36 @@ import SearchBar from '../components/SearchBar';
  */
 function JobsPage() {
   const [jobs, setJobs] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     retrieveJobs();
   }, []);
 
   async function retrieveJobs(filters = {}) {
-    setJobs(await JoblyApi.getJobs(filters));
+    try {
+      setJobs(await JoblyApi.getJobs(filters));
+    } catch (err) {
+      setErrorMessage(err[0]);
+    }
   }
 
   return (
     <main className="JobsPage">
       <SearchBar retrieveItems={retrieveJobs} filterName="title" />
-      <ul>
-        {jobs.map((job) => (
-          <li key={job.id}>
-            <JobCard job={job} isApplied={false} />
-          </li>
-        ))}
-      </ul>
+      {errorMessage ? (
+        <div className="JobsPage__error">
+          <p>{errorMessage}</p>
+        </div>
+      ) : (
+        <ul>
+          {jobs.map((job) => (
+            <li key={job.id}>
+              <JobCard job={job} isApplied={false} />
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }

@@ -11,25 +11,37 @@ import SearchBar from '../components/SearchBar';
  */
 function CompaniesPage() {
   const [companies, setCompanies] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     retrieveCompanies();
   }, []);
 
   async function retrieveCompanies(filters = {}) {
-    setCompanies(await JoblyApi.getCompanies(filters));
+    try {
+      const companies = await JoblyApi.getCompanies(filters);
+      setCompanies(companies);
+    } catch (err) {
+      setErrorMessage(err[0]);
+    }
   }
 
   return (
     <main className="CompaniesPage">
       <SearchBar retrieveItems={retrieveCompanies} filterName="name" />
-      <ul>
-        {companies.map((company) => (
-          <li key={company.handle}>
-            <CompanyCard company={company} />
-          </li>
-        ))}
-      </ul>
+      {errorMessage ? (
+        <div className="CompaniesPage__error">
+          <p>{errorMessage}</p>
+        </div>
+      ) : (
+        <ul>
+          {companies.map((company) => (
+            <li key={company.handle}>
+              <CompanyCard company={company} />
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }

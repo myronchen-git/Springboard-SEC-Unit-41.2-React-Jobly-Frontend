@@ -17,32 +17,43 @@ function CompanyPage({ applications }) {
   const { handle } = useParams();
   const [company, setCompany] = useState({});
   const [jobs, setJobs] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
-    JoblyApi.getCompany(handle).then((companyData) => {
-      setJobs([...companyData.jobs]);
-      delete companyData.jobs;
-      setCompany(companyData);
-    });
+    JoblyApi.getCompany(handle)
+      .then((companyData) => {
+        setJobs([...companyData.jobs]);
+        delete companyData.jobs;
+        setCompany(companyData);
+      })
+      .catch((err) => setErrorMessage(err[0]));
   }, [handle]);
 
   return (
     <main className="CompanyPage">
-      <section className="CompanyPage__info">
-        <header>
-          <img src={company?.logoUrl} alt={`${company.name} Logo`} />
-          <h1>{company.name}</h1>
-        </header>
-        {company.numEmployees && <p>{company.numEmployees} employees</p>}
-        <p>{company.description}</p>
-      </section>
-      <ul className="CompanyPage__jobs">
-        {jobs.map((job) => (
-          <li key={job.id}>
-            <JobCard job={job} isApplied={applications.includes(job.id)} />
-          </li>
-        ))}
-      </ul>
+      {errorMessage ? (
+        <div className="CompanyPage__error">
+          <p>{errorMessage}</p>
+        </div>
+      ) : (
+        <>
+          <section className="CompanyPage__info">
+            <header>
+              <img src={company?.logoUrl} alt={`${company.name} Logo`} />
+              <h1>{company.name}</h1>
+            </header>
+            {company.numEmployees && <p>{company.numEmployees} employees</p>}
+            <p>{company.description}</p>
+          </section>
+          <ul className="CompanyPage__jobs">
+            {jobs.map((job) => (
+              <li key={job.id}>
+                <JobCard job={job} isApplied={applications.includes(job.id)} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </main>
   );
 }
