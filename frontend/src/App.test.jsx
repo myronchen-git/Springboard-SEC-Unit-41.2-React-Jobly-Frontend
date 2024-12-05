@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import JoblyApi from '../../api';
 import App from './App.jsx';
@@ -29,6 +29,20 @@ vi.mock(import('../../api'), () => {
 // ==================================================
 
 describe('App', () => {
+  let localStorage = {};
+
+  beforeAll(() => {
+    // https://stackoverflow.com/a/65286435
+    window.localStorage = {
+      getItem: (key) => localStorage[key] || null,
+      setItem: (key, value) => (localStorage[key] = value.toString()),
+    };
+  });
+
+  beforeEach(() => {
+    localStorage = {};
+  });
+
   it('renders', async () => {
     await act(async () =>
       render(
@@ -66,7 +80,25 @@ describe('App', () => {
     expect(queryAllByText('Sign Up').length).toBeGreaterThanOrEqual(1);
   });
 
-  it.todo('loads correct homepage when previously logged in.');
+  it('loads correct homepage when previously logged in.', async () => {
+    // Arrange
+    window.localStorage.setItem('authToken', authToken);
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+
+    // Act
+    const { getByText, queryByText } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    // Assert
+    expect(getByText('Welcome Back', { exact: false })).toBeVisible();
+    expect(queryByText('Log In')).not.toBeInTheDocument();
+    expect(queryByText('Sign Up')).not.toBeInTheDocument();
+  });
 
   it('allows a user to sign up.', async () => {
     // Arrange

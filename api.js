@@ -56,7 +56,6 @@ class JoblyApi {
    */
   static async registerUser(user) {
     const res = await this.request('auth/register', user, 'post');
-    JoblyApi.token = res.token;
     return res.token;
   }
 
@@ -68,7 +67,6 @@ class JoblyApi {
    */
   static async loginUser(userAndPass) {
     const res = await this.request('auth/token', userAndPass, 'post');
-    JoblyApi.token = res.token;
     return res.token;
   }
 

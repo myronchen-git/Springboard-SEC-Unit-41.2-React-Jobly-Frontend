@@ -5,6 +5,7 @@ import JoblyApi from '../../api.js';
 import NavBar from './components/NavBar';
 import { UserContext } from './contexts.jsx';
 import RoutesList from './RoutesList';
+import { useLocalStorage } from './util/hooks.jsx';
 
 import './App.css';
 
@@ -14,7 +15,7 @@ import './App.css';
  * The core app component for Jobly.  This contains shared data and functions.
  */
 function App() {
-  const [authToken, setAuthToken] = useState(null);
+  const [authToken, setAuthToken] = useLocalStorage('authToken', null);
   const [user, setUser] = useState({});
   const [applications, setApplications] = useState([]);
 
@@ -24,6 +25,7 @@ function App() {
         let user;
         try {
           const { username } = jwtDecode(authToken);
+          JoblyApi.token = authToken;
           user = await JoblyApi.getUser(username);
         } catch (err) {
           if (Array.isArray(err)) {
