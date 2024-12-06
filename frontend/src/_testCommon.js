@@ -77,6 +77,7 @@ const userData = Object.freeze({
   username: userInfo.username,
   firstName: userInfo.firstName,
   lastName: userInfo.lastName,
+  email: userInfo.email,
   isAdmin: false,
   applications: Object.freeze([]),
 });

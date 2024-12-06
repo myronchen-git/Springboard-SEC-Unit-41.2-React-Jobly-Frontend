@@ -126,7 +126,7 @@ class JoblyApi {
    *
    * @param {String} username - The username of the account to get.
    * @returns {Object}
-   * { username, firstName, lastName, isAdmin, applications }
+   * { username, firstName, lastName, email, isAdmin, applications }
    * where applications is [ id, ... ].
    */
   static async getUser(username) {
