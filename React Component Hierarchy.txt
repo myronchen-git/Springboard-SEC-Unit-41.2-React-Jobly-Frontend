@@ -72,7 +72,7 @@ functions: login, signup, logout
         context: setApplications
 
     Profile
-    - A user's profile.
+    - Updates a user's profile info.
     props: user, setUser
     states: formData
     functions: handleChange, handleSubmit

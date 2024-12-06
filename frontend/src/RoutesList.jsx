@@ -15,7 +15,8 @@ import AllRoutesWrapper from './routes/middleware/AllRoutesWrapper.jsx';
 // ==================================================
 
 function RoutesList() {
-  const { applications, login, signup, user } = useContext(UserContext);
+  const { applications, login, signup, user, setUser } =
+    useContext(UserContext);
 
   return (
     <Routes>
@@ -23,7 +24,10 @@ function RoutesList() {
         <Route path="/" element={<HomePage username={user.username} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/signup" element={<SignUp signup={signup} />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={<Profile user={user} setUser={setUser} />}
+        />
         <Route path="/companies">
           <Route index element={<CompaniesPage />} />
           <Route

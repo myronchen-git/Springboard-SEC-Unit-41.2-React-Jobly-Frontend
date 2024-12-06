@@ -66,10 +66,11 @@ function App() {
       login,
       signup,
       user,
+      setUser,
       applications,
       setApplications,
     }),
-    [login, signup, user, applications, setApplications]
+    [login, signup, user, setUser, applications, setApplications]
   );
 
   return (
