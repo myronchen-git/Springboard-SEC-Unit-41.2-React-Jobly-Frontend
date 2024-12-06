@@ -28,13 +28,13 @@ functions: login, signup, logout, applyToJob
 
     CompaniesPage
     - Lists all companies.
-    states: companies
+    states: companies, errorMessage
     effects: gets all companies on initial render.
     functions: retrieveCompanies
 
         SearchBar
         - Filters items by name.
-        props: retrieveItems (retrieveCompanies)
+        props: retrieveItems (retrieveCompanies), filterName
         states: formData
         functions: handleChange, handleSubmit
 
@@ -44,8 +44,8 @@ functions: login, signup, logout, applyToJob
 
     CompanyPage
     - Displays company name, description, and list of job openings.
-    props: applications
-    states: company, jobs
+    states: company, jobs, errorMessage
+    context: applications
     effects: gets info about the company on initial render.
 
         JobCard
@@ -55,14 +55,14 @@ functions: login, signup, logout, applyToJob
 
     JobsPage
     - Lists all job openings.
-    props: applications
-    states: jobs
+    states: jobs, errorMessage
+    context: applications
     effects: gets all jobs on initial render.
     functions: retrieveJobs
 
         SearchBar
         - Filters items by name.
-        props: retrieveItems (retrieveJobs)
+        props: retrieveItems (retrieveJobs), filterName
         states: formData
         functions: handleChange, handleSubmit
 
@@ -74,5 +74,5 @@ functions: login, signup, logout, applyToJob
     Profile
     - Updates a user's profile info.
     props: user, setUser
-    states: formData
+    states: formData, feedbackMessage
     functions: handleChange, handleSubmit
