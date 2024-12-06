@@ -28,14 +28,12 @@ describe('SignUp', () => {
     mockNavigate.mockReset();
   });
 
-  it('renders.', async () => {
-    await act(async () => render(<SignUp signup={mockSignup} />));
+  it('renders.', () => {
+    render(<SignUp signup={mockSignup} />);
   });
 
-  it('matches snapshot.', async () => {
-    const { asFragment } = await act(async () =>
-      render(<SignUp signup={mockSignup} />)
-    );
+  it('matches snapshot.', () => {
+    const { asFragment } = render(<SignUp signup={mockSignup} />);
     expect(asFragment()).toMatchSnapshot();
   });
 

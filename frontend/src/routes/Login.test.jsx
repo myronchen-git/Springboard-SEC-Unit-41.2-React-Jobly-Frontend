@@ -10,7 +10,7 @@ vi.mock('react-router-dom');
 
 // ==================================================
 
-describe('SignUp', () => {
+describe('Login', () => {
   const formData = Object.freeze({
     username: 'user1',
     password: '12345',
@@ -26,13 +26,11 @@ describe('SignUp', () => {
   });
 
   it('renders.', async () => {
-    await act(async () => render(<Login login={mockLogin} />));
+    render(<Login login={mockLogin} />);
   });
 
   it('matches snapshot.', async () => {
-    const { asFragment } = await act(async () =>
-      render(<Login login={mockLogin} />)
-    );
+    const { asFragment } = render(<Login login={mockLogin} />);
     expect(asFragment()).toMatchSnapshot();
   });
 
