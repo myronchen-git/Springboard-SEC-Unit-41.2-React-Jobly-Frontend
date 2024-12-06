@@ -2,7 +2,7 @@ App
 - General page wrapper
 states: authToken, user, applications
 effects: gets user info on authToken change.
-functions: login, signup, logout
+functions: login, signup, logout, applyToJob
 
     NavBar
     - Navigation for different pages.  Displays links to Login and SignUp pages
@@ -51,7 +51,7 @@ functions: login, signup, logout
         JobCard
         - A job opening with details.
         props: job, isApplied,
-        context: setApplications
+        context: applyToJob
 
     JobsPage
     - Lists all job openings.
@@ -69,7 +69,7 @@ functions: login, signup, logout
         JobCard
         - A job opening with details.
         props: job, isApplied,
-        context: setApplications
+        context: applyToJob
 
     Profile
     - Updates a user's profile info.

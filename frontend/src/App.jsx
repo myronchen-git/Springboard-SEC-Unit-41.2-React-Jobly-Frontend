@@ -61,6 +61,16 @@ function App() {
     setAuthToken(null);
   }
 
+  /**
+   * Applies to a specific job.  Calls backend to update database.  Updates
+   * applications state.
+   * @param {String} jobId - ID of the job to apply to.
+   */
+  const applyToJob = useCallback(async (jobId) => {
+    const appliedJobId = await JoblyApi.postApplication(user.username, jobId);
+    setApplications((applications) => [...applications, appliedJobId]);
+  });
+
   const userContextValues = useMemo(
     () => ({
       login,
@@ -68,9 +78,9 @@ function App() {
       user,
       setUser,
       applications,
-      setApplications,
+      applyToJob,
     }),
-    [login, signup, user, setUser, applications, setApplications]
+    [login, signup, user, setUser, applications, applyToJob]
   );
 
   return (

@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+
+import { UserContext } from '../contexts';
 
 // ==================================================
 
@@ -7,6 +10,7 @@ import PropTypes from 'prop-types';
  *
  * @param {Object} props - React component properties.
  * @param {Object} props.job - The job to display.
+ * @param {Object} props.job.id - ID of the job.
  * @param {Object} props.job.title - Title of the job.
  * @param {Object} props.job.salary - Salary of the job.
  * @param {Object} props.job.equity - Equity of the job.
@@ -16,6 +20,8 @@ import PropTypes from 'prop-types';
  *   provided job.
  */
 function JobCard({ job, isApplied }) {
+  const { applyToJob } = useContext(UserContext);
+
   return (
     <article className="JobCard">
       <header className="JobCard__header">
@@ -32,7 +38,9 @@ function JobCard({ job, isApplied }) {
             Applied
           </button>
         ) : (
-          <button type="button">Apply</button>
+          <button type="button" onClick={() => applyToJob(job.id)}>
+            Apply
+          </button>
         )}
       </form>
     </article>

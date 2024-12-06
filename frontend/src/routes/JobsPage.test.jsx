@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import JoblyApi from '../../../api';
 import { jobs } from '../_testCommon.js';
+import { UserContext } from '../contexts.jsx';
 import JobsPage from './JobsPage.jsx';
 
 // ==================================================
@@ -16,12 +17,15 @@ vi.mock(import('../../../api'), () => {
   };
 });
 
-vi.mock('react-router-dom');
-
 // ==================================================
 
 describe('JobsPage', () => {
+  const applications = Object.freeze(['2', '3']);
+  const mockApplyToJob = vi.fn();
+
   beforeEach(() => {
+    mockApplyToJob.mockReset();
+
     JoblyApi.getJobs.mockImplementation((filters) => {
       let jobsToReturn;
 
@@ -48,18 +52,40 @@ describe('JobsPage', () => {
   });
 
   it('renders.', async () => {
-    await act(async () => render(<JobsPage />));
+    await act(async () =>
+      render(
+        <UserContext.Provider
+          value={{ applications, applyToJob: mockApplyToJob }}
+        >
+          <JobsPage />
+        </UserContext.Provider>
+      )
+    );
   });
 
   it('matches snapshot.', async () => {
-    const { asFragment } = await act(async () => render(<JobsPage />));
+    const { asFragment } = await act(async () =>
+      render(
+        <UserContext.Provider
+          value={{ applications, applyToJob: mockApplyToJob }}
+        >
+          <JobsPage />
+        </UserContext.Provider>
+      )
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('displays jobs and search bar.', async () => {
     // Act
     const { getByPlaceholderText, getByText } = await act(async () =>
-      render(<JobsPage />)
+      render(
+        <UserContext.Provider
+          value={{ applications, applyToJob: mockApplyToJob }}
+        >
+          <JobsPage />
+        </UserContext.Provider>
+      )
     );
 
     // Assert
@@ -72,7 +98,14 @@ describe('JobsPage', () => {
   it('filters the list of jobs.', async () => {
     // Arrange
     const { getByPlaceholderText, getByText, queryByText } = await act(
-      async () => render(<JobsPage />)
+      async () =>
+        render(
+          <UserContext.Provider
+            value={{ applications, applyToJob: mockApplyToJob }}
+          >
+            <JobsPage />
+          </UserContext.Provider>
+        )
     );
 
     const searchInput = getByPlaceholderText('Enter search term...');
@@ -90,5 +123,47 @@ describe('JobsPage', () => {
         expect(queryByText(job.title)).not.toBeInTheDocument();
       }
     });
+  });
+
+  it('displays the correct apply button status.', async () => {
+    // Act
+    const { getAllByText } = await act(async () =>
+      render(
+        <UserContext.Provider
+          value={{ applications, applyToJob: mockApplyToJob }}
+        >
+          <JobsPage />
+        </UserContext.Provider>
+      )
+    );
+
+    // Assert
+    // Fragile!
+    const applybtns = getAllByText('Appl', { exact: false });
+
+    expect(applybtns[0]).toHaveTextContent('Apply');
+    expect(applybtns[1]).toHaveTextContent('Applied');
+  });
+
+  it('allows applying to a job.', async () => {
+    // Arrange
+    const { queryAllByText } = await act(async () =>
+      render(
+        <UserContext.Provider
+          value={{ applications, applyToJob: mockApplyToJob }}
+        >
+          <JobsPage />
+        </UserContext.Provider>
+      )
+    );
+
+    const applyBtns = queryAllByText('Apply');
+
+    // Act
+    await act(async () => fireEvent.click(applyBtns[0]));
+
+    // Assert
+    expect(mockApplyToJob).toHaveBeenCalledOnce();
+    expect(mockApplyToJob).toHaveBeenCalledWith(jobs[0].id);
   });
 });

@@ -78,9 +78,10 @@ exports[`JobsPage > matches snapshot. 1`] = `
           </summary>
           bound HTMLFormElement {
             "0": <button
+              disabled=""
               type="button"
             >
-              Apply
+              Applied
             </button>,
           }
         </article>

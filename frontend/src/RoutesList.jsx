@@ -15,8 +15,7 @@ import AllRoutesWrapper from './routes/middleware/AllRoutesWrapper.jsx';
 // ==================================================
 
 function RoutesList() {
-  const { applications, login, signup, user, setUser } =
-    useContext(UserContext);
+  const { login, signup, user, setUser } = useContext(UserContext);
 
   return (
     <Routes>
@@ -30,10 +29,7 @@ function RoutesList() {
         />
         <Route path="/companies">
           <Route index element={<CompaniesPage />} />
-          <Route
-            path=":handle"
-            element={<CompanyPage applications={applications} />}
-          />
+          <Route path=":handle" element={<CompanyPage />} />
           <Route path="*" element={<NotFound resourceName="Company " />} />
         </Route>
         <Route path="/jobs" element={<JobsPage />} />

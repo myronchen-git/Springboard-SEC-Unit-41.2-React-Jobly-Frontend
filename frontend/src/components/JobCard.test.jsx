@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { useContext } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { jobs } from '../_testCommon.js';
@@ -8,14 +9,24 @@ import JobCard from './JobCard.jsx';
 
 vi.mock('react-router-dom');
 
+vi.mock('react', async (importOriginal) => {
+  const mod = await importOriginal();
+  return {
+    ...mod,
+    useContext: vi.fn(),
+  };
+});
+
 // ==================================================
 
 describe('JobCard', () => {
   const originalJob = jobs[0];
   let job;
+  const mockApplyToJob = vi.fn();
 
   beforeEach(() => {
     job = structuredClone(jobs[0]);
+    useContext.mockReturnValue({ applyToJob: mockApplyToJob });
   });
 
   it('renders.', () => {

@@ -1,22 +1,20 @@
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import JoblyApi from '../../../api';
 import JobCard from '../components/JobCard.jsx';
+import { UserContext } from '../contexts.jsx';
 
 // ==================================================
 
 /**
  * Displays detailed info about a company and a list of its job openings.
- *
- * @param {Object} props - React component properties.
- * @param {Array} props.applications - A list of job IDs that were applied to.
  */
-function CompanyPage({ applications }) {
+function CompanyPage() {
   const { handle } = useParams();
   const [company, setCompany] = useState({});
   const [jobs, setJobs] = useState([]);
+  const { applications } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
@@ -59,9 +57,5 @@ function CompanyPage({ applications }) {
 }
 
 // ==================================================
-
-CompanyPage.propTypes = {
-  applications: PropTypes.array.isRequired,
-};
 
 export default CompanyPage;

@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import JoblyApi from '../../../api';
 import JobCard from '../components/JobCard';
 import SearchBar from '../components/SearchBar';
+import { UserContext } from '../contexts';
 
 // ==================================================
 
@@ -12,6 +13,7 @@ import SearchBar from '../components/SearchBar';
 function JobsPage() {
   const [jobs, setJobs] = useState([]);
   const [errorMessage, setErrorMessage] = useState();
+  const { applications } = useContext(UserContext);
 
   useEffect(() => {
     retrieveJobs();
@@ -36,7 +38,7 @@ function JobsPage() {
         <ul>
           {jobs.map((job) => (
             <li key={job.id}>
-              <JobCard job={job} isApplied={false} />
+              <JobCard job={job} isApplied={applications.includes(job.id)} />
             </li>
           ))}
         </ul>
