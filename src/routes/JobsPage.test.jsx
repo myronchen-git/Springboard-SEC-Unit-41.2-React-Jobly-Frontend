@@ -1,14 +1,14 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import JoblyApi from '../../../api';
 import { jobs } from '../_testCommon.js';
+import JoblyApi from '../api.js';
 import { UserContext } from '../contexts.jsx';
 import JobsPage from './JobsPage.jsx';
 
 // ==================================================
 
-vi.mock(import('../../../api'), () => {
+vi.mock(import('../api.js'), () => {
   const MockJoblyApi = vi.fn();
   MockJoblyApi.getJobs = vi.fn();
 

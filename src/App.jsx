@@ -1,10 +1,10 @@
 import { jwtDecode } from 'jwt-decode';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import JoblyApi from '../../api.js';
-import NavBar from './components/NavBar';
+import JoblyApi from './api.js';
+import NavBar from './components/NavBar.jsx';
 import { UserContext } from './contexts.jsx';
-import RoutesList from './RoutesList';
+import RoutesList from './RoutesList.jsx';
 import { useLocalStorage } from './util/hooks.jsx';
 
 import './App.css';

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import JoblyApi from '../../../api.js';
+import JoblyApi from '../api.js';
 
 // ==================================================
 

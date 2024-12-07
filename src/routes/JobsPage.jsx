@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 
-import JoblyApi from '../../../api';
-import JobCard from '../components/JobCard';
-import SearchBar from '../components/SearchBar';
-import { UserContext } from '../contexts';
+import JoblyApi from '../api.js';
+import JobCard from '../components/JobCard.jsx';
+import SearchBar from '../components/SearchBar.jsx';
+import { UserContext } from '../contexts.jsx';
 
 // ==================================================
 

@@ -1,13 +1,13 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import JoblyApi from '../../../api';
 import { userData } from '../_testCommon.js';
+import JoblyApi from '../api.js';
 import Profile from './Profile.jsx';
 
 // ==================================================
 
-vi.mock(import('../../../api'), () => {
+vi.mock(import('../api.js'), () => {
   const MockJoblyApi = vi.fn();
   MockJoblyApi.patchUser = vi.fn();
 

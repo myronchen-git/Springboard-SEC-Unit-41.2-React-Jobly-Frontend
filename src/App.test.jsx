@@ -4,7 +4,7 @@ import { act } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import JoblyApi from '../../api';
+import JoblyApi from './api.js';
 import App from './App.jsx';
 
 import {
@@ -18,7 +18,7 @@ import {
 
 // ==================================================
 
-vi.mock(import('../../api'), () => {
+vi.mock(import('./api.js'), () => {
   const MockJoblyApi = vi.fn();
 
   return {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import JoblyApi from '../../../api';
-import CompanyCard from '../components/CompanyCard';
-import SearchBar from '../components/SearchBar';
+import JoblyApi from '../api.js';
+import CompanyCard from '../components/CompanyCard.jsx';
+import SearchBar from '../components/SearchBar.jsx';
 
 // ==================================================
 

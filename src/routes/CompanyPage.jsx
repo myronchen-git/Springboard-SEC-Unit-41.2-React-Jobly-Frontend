@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import JoblyApi from '../../../api';
+import JoblyApi from '../api.js';
 import JobCard from '../components/JobCard.jsx';
 import { UserContext } from '../contexts.jsx';
 

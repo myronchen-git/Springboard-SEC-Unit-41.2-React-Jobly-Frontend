@@ -2,8 +2,8 @@ import { act, fireEvent, render } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import JoblyApi from '../../../api';
 import { companyDetails } from '../_testCommon.js';
+import JoblyApi from '../api.js';
 import { UserContext } from '../contexts.jsx';
 import CompanyPage from './CompanyPage.jsx';
 
@@ -11,7 +11,7 @@ import CompanyPage from './CompanyPage.jsx';
 
 vi.mock('react-router-dom');
 
-vi.mock(import('../../../api'), () => {
+vi.mock(import('../api.js'), () => {
   const MockJoblyApi = vi.fn();
   MockJoblyApi.getCompany = vi.fn();
 

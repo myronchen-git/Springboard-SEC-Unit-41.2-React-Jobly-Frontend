@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import NavBar from './NavBar';
+import NavBar from './NavBar.jsx';
 
 // ==================================================
 
