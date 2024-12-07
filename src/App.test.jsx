@@ -199,7 +199,7 @@ describe('App', () => {
     // Arrange
     const companyIndexToFilter = 1;
 
-    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    window.localStorage.setItem('authToken', authToken);
     JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
     JoblyApi.getCompanies = vi.fn((filters) => {
       if (filters.name) {
@@ -215,26 +215,14 @@ describe('App', () => {
 
     const user = userEvent.setup();
 
-    const {
-      findByText,
-      getAllByText,
-      getByLabelText,
-      getByPlaceholderText,
-      getByText,
-      queryByText,
-    } = await act(async () =>
-      render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      )
-    );
-
-    await user.click(getAllByText('Log In')[0]);
-
-    await user.type(getByLabelText('Username'), userInfo.username);
-    await user.type(getByLabelText('Password'), userInfo.password);
-    await user.click(getByText('Submit'));
+    const { findByText, getByPlaceholderText, getByText, queryByText } =
+      await act(async () =>
+        render(
+          <MemoryRouter initialEntries={['/']}>
+            <App />
+          </MemoryRouter>
+        )
+      );
 
     await user.click(await findByText('Companies'));
 
@@ -263,7 +251,7 @@ describe('App', () => {
 
   it('displays a specific company and its job openings.', async () => {
     // Arrange
-    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    window.localStorage.setItem('authToken', authToken);
     JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
     JoblyApi.getCompanies = vi.fn(() => Promise.resolve(companies));
     JoblyApi.getCompany = vi.fn(() =>
@@ -272,20 +260,13 @@ describe('App', () => {
 
     const user = userEvent.setup();
 
-    const { findByText, getAllByText, getByLabelText, getByText } = await act(
-      async () =>
-        render(
-          <MemoryRouter initialEntries={['/']}>
-            <App />
-          </MemoryRouter>
-        )
+    const { findByText } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
     );
-
-    await user.click(getAllByText('Log In')[0]);
-
-    await user.type(getByLabelText('Username'), userInfo.username);
-    await user.type(getByLabelText('Password'), userInfo.password);
-    await user.click(getByText('Submit'));
 
     // Act
     await user.click(await findByText('Companies'));
@@ -336,7 +317,7 @@ describe('App', () => {
     // Arrange
     const jobIndexToFilter = 1;
 
-    JoblyApi.loginUser = vi.fn(() => Promise.resolve(authToken));
+    window.localStorage.setItem('authToken', authToken);
     JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
     JoblyApi.getJobs = vi.fn((filters) => {
       if (filters.title) {
@@ -352,26 +333,14 @@ describe('App', () => {
 
     const user = userEvent.setup();
 
-    const {
-      findByText,
-      getAllByText,
-      getByLabelText,
-      getByPlaceholderText,
-      getByText,
-      queryByText,
-    } = await act(async () =>
-      render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      )
-    );
-
-    await user.click(getAllByText('Log In')[0]);
-
-    await user.type(getByLabelText('Username'), userInfo.username);
-    await user.type(getByLabelText('Password'), userInfo.password);
-    await user.click(getByText('Submit'));
+    const { findByText, getByPlaceholderText, getByText, queryByText } =
+      await act(async () =>
+        render(
+          <MemoryRouter initialEntries={['/']}>
+            <App />
+          </MemoryRouter>
+        )
+      );
 
     await user.click(await findByText('Jobs'));
 
