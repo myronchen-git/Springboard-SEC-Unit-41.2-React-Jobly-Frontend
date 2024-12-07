@@ -36,6 +36,9 @@ describe('App', () => {
     window.localStorage = {
       getItem: (key) => localStorage[key] || null,
       setItem: (key, value) => (localStorage[key] = value.toString()),
+      removeItem: (key) => {
+        delete localStorage[key];
+      },
     };
   });
 
@@ -297,7 +300,37 @@ describe('App', () => {
     }
   });
 
-  it.todo("allows a user to apply for a job from a company's job openings.");
+  it("allows a user to apply for a job from a company's job openings.", async () => {
+    // Arrange
+    window.localStorage.setItem('authToken', authToken);
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.getCompanies = vi.fn(() => Promise.resolve(companies));
+    JoblyApi.getCompany = vi.fn(() =>
+      Promise.resolve(structuredClone(companyDetails))
+    );
+    JoblyApi.postApplication = vi.fn((username, jobId) =>
+      Promise.resolve(jobId)
+    );
+
+    const user = userEvent.setup();
+
+    const { findByText, queryAllByText } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    await user.click(await findByText('Companies'));
+    await user.click(await findByText(companies[0].name));
+
+    // Act
+    await user.click(queryAllByText('Apply')[0]);
+
+    // Assert
+    expect(await findByText('Applied')).toBeVisible();
+  });
 
   it('allows filtering job openings.', async () => {
     // Arrange
@@ -363,9 +396,91 @@ describe('App', () => {
     }
   });
 
-  it.todo(
-    'allows a user to apply for a job from the list of all job openings.'
-  );
+  it('allows a user to apply for a job from the list of all job openings.', async () => {
+    // Arrange
+    window.localStorage.setItem('authToken', authToken);
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.getJobs = vi.fn(() => Promise.resolve(jobs));
+    JoblyApi.postApplication = vi.fn((username, jobId) =>
+      Promise.resolve(jobId)
+    );
 
-  it.todo("allows updating the user's profile.");
+    const user = userEvent.setup();
+
+    const { findByText, queryAllByText } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    await user.click(await findByText('Jobs'));
+
+    // Act
+    await user.click(queryAllByText('Apply')[0]);
+
+    // Assert
+    expect(await findByText('Applied')).toBeVisible();
+  });
+
+  it("allows updating the user's profile.", async () => {
+    // Arrange
+    const updatedData = Object.freeze({
+      firstName: 'Updated First',
+      lastName: 'Updated Last',
+      email: 'updated.email@email.com',
+    });
+
+    const updatedUser = { ...userData, ...updatedData };
+    delete updatedUser.applications;
+    Object.freeze(updatedUser);
+
+    window.localStorage.setItem('authToken', authToken);
+    JoblyApi.getUser = vi.fn(() => Promise.resolve(structuredClone(userData)));
+    JoblyApi.patchUser = vi.fn(() => Promise.resolve(updatedUser));
+
+    const user = userEvent.setup();
+
+    const { findByLabelText, findByText, getByText } = await act(async () =>
+      render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      )
+    );
+
+    await user.click(await findByText('Profile'));
+
+    const firstNameInput = await findByLabelText('First Name');
+    const lastNameInput = await findByLabelText('Last Name');
+    const emailInput = await findByLabelText('Email');
+
+    expect(firstNameInput).toHaveValue(userData.firstName);
+    expect(lastNameInput).toHaveValue(userData.lastName);
+    expect(emailInput).toHaveValue(userData.email);
+
+    // Act
+    await user.clear(firstNameInput);
+    await user.type(firstNameInput, updatedData.firstName);
+    await user.clear(lastNameInput);
+    await user.type(lastNameInput, updatedData.lastName);
+    await user.clear(emailInput);
+    await user.type(emailInput, updatedData.email);
+    await user.click(getByText('Submit'));
+
+    // Assert
+    expect(await findByText('Profile Updated')).toBeVisible();
+
+    await user.click(getByText('Home'));
+    await user.click(getByText('Profile'));
+
+    expect(await findByLabelText('First Name')).toHaveValue(
+      updatedData.firstName
+    );
+    expect(await findByLabelText('Last Name')).toHaveValue(
+      updatedData.lastName
+    );
+    expect(await findByLabelText('Email')).toHaveValue(updatedData.email);
+  });
 });
