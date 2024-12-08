@@ -2,14 +2,7 @@ import axios from '../node_modules/axios';
 
 // ==================================================
 
-let BASE_URL;
-if (typeof process !== 'undefined') {
-  BASE_URL = process.env.REACT_APP_BASE_URL;
-} else if (typeof import.meta !== 'undefined') {
-  BASE_URL = import.meta.env.REACT_APP_BASE_URL;
-}
-
-BASE_URL ||= 'http://localhost:3001';
+const BASE_URL = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 
 // --------------------------------------------------
 
