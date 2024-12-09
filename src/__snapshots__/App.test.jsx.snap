@@ -6,30 +6,46 @@ exports[`App > matches snapshot. 1`] = `
     class="App"
   >
     <nav
-      class="NavBar"
+      class="NavBar navbar navbar-light bg-light"
     >
-      <a
-        aria-current="page"
-        class="active"
-        data-discover="true"
-        href="/"
+      <div
+        class="container-fluid"
       >
-        Home
-      </a>
-      <a
-        class=""
-        data-discover="true"
-        href="/login"
-      >
-        Login
-      </a>
-      <a
-        class=""
-        data-discover="true"
-        href="/signup"
-      >
-        Sign Up
-      </a>
+        <a
+          aria-current="page"
+          class="navbar-brand active"
+          data-discover="true"
+          href="/"
+        >
+          Home
+        </a>
+        <ul
+          class="nav"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link link-secondary"
+              data-discover="true"
+              href="/login"
+            >
+              Login
+            </a>
+          </li>
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link link-secondary"
+              data-discover="true"
+              href="/signup"
+            >
+              Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <main>
       <h1>

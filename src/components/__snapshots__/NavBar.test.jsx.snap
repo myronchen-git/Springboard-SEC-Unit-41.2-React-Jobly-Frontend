@@ -3,45 +3,69 @@
 exports[`NavBar > matches snapshot. 1`] = `
 <DocumentFragment>
   <nav
-    class="NavBar"
+    class="NavBar navbar navbar-light bg-light"
   >
-    <a
-      aria-current="page"
-      class="active"
-      data-discover="true"
-      href="/"
+    <div
+      class="container-fluid"
     >
-      Home
-    </a>
-    <a
-      class=""
-      data-discover="true"
-      href="/companies"
-    >
-      Companies
-    </a>
-    <a
-      class=""
-      data-discover="true"
-      href="/jobs"
-    >
-      Jobs
-    </a>
-    <a
-      class=""
-      data-discover="true"
-      href="/profile"
-    >
-      Profile
-    </a>
-    <a
-      aria-current="page"
-      class="active"
-      data-discover="true"
-      href="/"
-    >
-      Logout testuser
-    </a>
+      <a
+        aria-current="page"
+        class="navbar-brand active"
+        data-discover="true"
+        href="/"
+      >
+        Home
+      </a>
+      <ul
+        class="nav"
+      >
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link link-secondary"
+            data-discover="true"
+            href="/companies"
+          >
+            Companies
+          </a>
+        </li>
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link link-secondary"
+            data-discover="true"
+            href="/jobs"
+          >
+            Jobs
+          </a>
+        </li>
+        <li
+          class="nav-item"
+        >
+          <a
+            class="nav-link link-secondary"
+            data-discover="true"
+            href="/profile"
+          >
+            Profile
+          </a>
+        </li>
+        <li
+          class="nav-item"
+        >
+          <a
+            aria-current="page"
+            class="nav-link link-secondary active"
+            data-discover="true"
+            href="/"
+          >
+            Logout testuser
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </DocumentFragment>
 `;

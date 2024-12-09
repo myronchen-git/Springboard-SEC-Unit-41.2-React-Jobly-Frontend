@@ -1,5 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Nav, Navbar, NavItem } from 'reactstrap';
 
 // ==================================================
 
@@ -13,28 +15,54 @@ import { NavLink } from 'react-router-dom';
  */
 function NavBar({ username, logout }) {
   return (
-    <nav className="NavBar">
-      <NavLink to="/">Home</NavLink>
-      {username ? (
-        <>
-          <NavLink to="/companies" end>
-            Companies
-          </NavLink>
-          <NavLink to="/jobs" end>
-            Jobs
-          </NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/" onClick={logout}>
-            Logout {username}
-          </NavLink>
-        </>
-      ) : (
-        <>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </>
-      )}
-    </nav>
+    <Navbar className="NavBar" color="light" light>
+      <NavLink className="navbar-brand" to="/">
+        Home
+      </NavLink>
+      <Nav>
+        {username ? (
+          <>
+            <NavItem>
+              <NavLink className="nav-link link-secondary" to="/companies" end>
+                Companies
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-link link-secondary" to="/jobs" end>
+                Jobs
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-link link-secondary" to="/profile">
+                Profile
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className="nav-link link-secondary"
+                to="/"
+                onClick={logout}
+              >
+                Logout {username}
+              </NavLink>
+            </NavItem>
+          </>
+        ) : (
+          <>
+            <NavItem>
+              <NavLink className="nav-link link-secondary" to="/login">
+                Login
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className="nav-link link-secondary" to="/signup">
+                Sign Up
+              </NavLink>
+            </NavItem>
+          </>
+        )}
+      </Nav>
+    </Navbar>
   );
 }
 
