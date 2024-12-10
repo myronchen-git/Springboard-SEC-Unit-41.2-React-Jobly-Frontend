@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+
+import './HomePage.css';
 
 // ==================================================
 
@@ -13,20 +16,20 @@ import { Link } from 'react-router-dom';
  */
 function HomePage({ username }) {
   return (
-    <main>
+    <main className="HomePage">
       <h1>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {username ? (
-        <div>
+        <div className="HomePage__welcome-back-message">
           <p>Welcome Back, {username}!</p>
         </div>
       ) : (
         <div>
-          <Link to="/login">
-            <button type="button">Log In</button>
+          <Link className="m-2" to="/login">
+            <Button color="light">Log In</Button>
           </Link>
-          <Link to="/signup">
-            <button type="button">Sign Up</button>
+          <Link className="m-2" to="/signup">
+            <Button color="light">Sign Up</Button>
           </Link>
         </div>
       )}

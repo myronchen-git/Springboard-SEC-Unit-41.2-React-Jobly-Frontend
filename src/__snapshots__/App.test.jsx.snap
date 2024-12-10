@@ -47,7 +47,9 @@ exports[`App > matches snapshot. 1`] = `
         </ul>
       </div>
     </nav>
-    <main>
+    <main
+      class="HomePage"
+    >
       <h1>
         Jobly
       </h1>
@@ -56,21 +58,23 @@ exports[`App > matches snapshot. 1`] = `
       </p>
       <div>
         <a
+          class="m-2"
           data-discover="true"
           href="/login"
         >
           <button
-            type="button"
+            class="btn btn-light"
           >
             Log In
           </button>
         </a>
         <a
+          class="m-2"
           data-discover="true"
           href="/signup"
         >
           <button
-            type="button"
+            class="btn btn-light"
           >
             Sign Up
           </button>

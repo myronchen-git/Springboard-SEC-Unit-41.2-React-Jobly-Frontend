@@ -5,53 +5,67 @@ exports[`SignUp > matches snapshot. 1`] = `
   <main
     class="SignUp"
   >
-    <header>
-      <h1>
-        Sign Up
-      </h1>
-    </header>
-    bound HTMLFormElement {
-      "0": <input
-        id="SignUp__input-username"
-        name="username"
-        required=""
-        type="text"
-        value=""
-      />,
-      "1": <input
-        id="SignUp__input-password"
-        name="password"
-        required=""
-        type="password"
-        value=""
-      />,
-      "2": <input
-        id="SignUp__input-firstName"
-        name="firstName"
-        required=""
-        type="text"
-        value=""
-      />,
-      "3": <input
-        id="SignUp__input-lastName"
-        name="lastName"
-        required=""
-        type="text"
-        value=""
-      />,
-      "4": <input
-        id="SignUp__input-email"
-        name="email"
-        required=""
-        type="email"
-        value=""
-      />,
-      "5": <button
-        type="submit"
+    <div
+      class="card"
+    >
+      <div
+        class="card-body"
       >
-        Submit
-      </button>,
-    }
+        <h2
+          class="card-title"
+        >
+          Sign Up
+        </h2>
+        bound HTMLFormElement {
+          "0": <input
+            class="form-control"
+            id="SignUp__input-username"
+            name="username"
+            required=""
+            type="text"
+            value=""
+          />,
+          "1": <input
+            class="form-control"
+            id="SignUp__input-password"
+            name="password"
+            required=""
+            type="password"
+            value=""
+          />,
+          "2": <input
+            class="form-control"
+            id="SignUp__input-firstName"
+            name="firstName"
+            required=""
+            type="text"
+            value=""
+          />,
+          "3": <input
+            class="form-control"
+            id="SignUp__input-lastName"
+            name="lastName"
+            required=""
+            type="text"
+            value=""
+          />,
+          "4": <input
+            class="form-control"
+            id="SignUp__input-email"
+            name="email"
+            required=""
+            type="email"
+            value=""
+          />,
+          "5": <button
+            class="btn btn-light"
+            type="submit"
+          >
+            Submit
+          </button>,
+        }
+      </div>
+    </div>
   </main>
 </DocumentFragment>
 `;

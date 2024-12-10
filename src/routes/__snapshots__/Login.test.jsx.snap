@@ -5,32 +5,43 @@ exports[`Login > matches snapshot. 1`] = `
   <main
     class="Login"
   >
-    <header>
-      <h1>
-        Login
-      </h1>
-    </header>
-    bound HTMLFormElement {
-      "0": <input
-        id="Login__input-username"
-        name="username"
-        required=""
-        type="text"
-        value=""
-      />,
-      "1": <input
-        id="Login__input-password"
-        name="password"
-        required=""
-        type="password"
-        value=""
-      />,
-      "2": <button
-        type="submit"
+    <div
+      class="card"
+    >
+      <div
+        class="card-body"
       >
-        Submit
-      </button>,
-    }
+        <h2
+          class="card-title"
+        >
+          Login
+        </h2>
+        bound HTMLFormElement {
+          "0": <input
+            class="form-control"
+            id="Login__input-username"
+            name="username"
+            required=""
+            type="text"
+            value=""
+          />,
+          "1": <input
+            class="form-control"
+            id="Login__input-password"
+            name="password"
+            required=""
+            type="password"
+            value=""
+          />,
+          "2": <button
+            class="btn btn-light"
+            type="submit"
+          >
+            Submit
+          </button>,
+        }
+      </div>
+    </div>
   </main>
 </DocumentFragment>
 `;

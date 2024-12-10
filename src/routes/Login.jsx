@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+} from 'reactstrap';
 
 // ==================================================
 
@@ -39,39 +50,43 @@ function Login({ login }) {
 
   return (
     <main className="Login">
-      <header>
-        <h1>Login</h1>
-      </header>
-      <form className="Login__form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="Login__input-username">Username</label>
-          <input
-            id="Login__input-username"
-            type="text"
-            name="username"
-            value={formData.username}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="Login__input-password">Password</label>
-          <input
-            id="Login__input-password"
-            type="password"
-            name="password"
-            value={formData.password}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        {errorMessage && (
-          <div className="Login__error">
-            <p>{errorMessage}</p>
-          </div>
-        )}
-        <button type="submit">Submit</button>
-      </form>
+      <Card>
+        <CardBody>
+          <CardTitle tag={'h2'}>Login</CardTitle>
+          <Form className="Login__form" onSubmit={handleSubmit}>
+            <FormGroup className="text-start">
+              <Label htmlFor="Login__input-username">
+                <b>Username</b>
+              </Label>
+              <Input
+                id="Login__input-username"
+                type="text"
+                name="username"
+                value={formData.username}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="text-start">
+              <Label htmlFor="Login__input-password">
+                <b>Password</b>
+              </Label>
+              <Input
+                id="Login__input-password"
+                type="password"
+                name="password"
+                value={formData.password}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            <Button color="light" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </CardBody>
+      </Card>
     </main>
   );
 }

@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+} from 'reactstrap';
 
 // ==================================================
 
@@ -42,72 +53,82 @@ function SignUp({ signup }) {
 
   return (
     <main className="SignUp">
-      <header>
-        <h1>Sign Up</h1>
-      </header>
-      <form className="SignUp__form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="SignUp__input-username">Username</label>
-          <input
-            id="SignUp__input-username"
-            type="text"
-            name="username"
-            value={formData.username}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="SignUp__input-password">Password</label>
-          <input
-            id="SignUp__input-password"
-            type="password"
-            name="password"
-            value={formData.password}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="SignUp__input-firstName">First Name</label>
-          <input
-            id="SignUp__input-firstName"
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="SignUp__input-lastName">Last Name</label>
-          <input
-            id="SignUp__input-lastName"
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="SignUp__input-email">Email</label>
-          <input
-            id="SignUp__input-email"
-            type="email"
-            name="email"
-            value={formData.email}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        {errorMessage && (
-          <div className="SignUp__error">
-            <p>{errorMessage}</p>
-          </div>
-        )}
-        <button type="submit">Submit</button>
-      </form>
+      <Card>
+        <CardBody>
+          <CardTitle tag={'h2'}>Sign Up</CardTitle>
+          <Form className="SignUp__form" onSubmit={handleSubmit}>
+            <FormGroup className="text-start">
+              <Label htmlFor="SignUp__input-username">
+                <b>Username</b>
+              </Label>
+              <Input
+                id="SignUp__input-username"
+                type="text"
+                name="username"
+                value={formData.username}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="text-start">
+              <Label htmlFor="SignUp__input-password">
+                <b>Password</b>
+              </Label>
+              <Input
+                id="SignUp__input-password"
+                type="password"
+                name="password"
+                value={formData.password}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="text-start">
+              <Label htmlFor="SignUp__input-firstName">
+                <b>First Name</b>
+              </Label>
+              <Input
+                id="SignUp__input-firstName"
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="text-start">
+              <Label htmlFor="SignUp__input-lastName">
+                <b>Last Name</b>
+              </Label>
+              <Input
+                id="SignUp__input-lastName"
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="text-start">
+              <Label htmlFor="SignUp__input-email">
+                <b>Email</b>
+              </Label>
+              <Input
+                id="SignUp__input-email"
+                type="email"
+                name="email"
+                value={formData.email}
+                required
+                onChange={handleChange}
+              />
+            </FormGroup>
+            {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+            <Button color="light" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </CardBody>
+      </Card>
     </main>
   );
 }

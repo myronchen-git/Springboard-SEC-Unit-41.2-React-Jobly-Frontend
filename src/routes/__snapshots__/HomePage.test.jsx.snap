@@ -2,14 +2,18 @@
 
 exports[`CompanyPage > matches snapshot. 1`] = `
 <DocumentFragment>
-  <main>
+  <main
+    class="HomePage"
+  >
     <h1>
       Jobly
     </h1>
     <p>
       All the jobs in one, convenient place.
     </p>
-    <div>
+    <div
+      class="HomePage__welcome-back-message"
+    >
       <p>
         Welcome Back, testuser!
       </p>
