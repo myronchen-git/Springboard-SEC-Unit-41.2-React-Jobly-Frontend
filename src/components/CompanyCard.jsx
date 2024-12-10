@@ -13,9 +13,9 @@ import './CompanyCard.css';
  * @param {Object} props.company - The company to display.
  * @param {String} props.company.name - Name of the company.
  * @param {String} props.company.description - Description of the company.
- * @param {Object} props.company.numEmployees - Number of employees in the
+ * @param {Number} props.company.numEmployees - Number of employees in the
  *   company.
- * @param {Object} props.company.logoUrl - URL of the logo.
+ * @param {String} props.company.logoUrl - URL of the logo.
  */
 function CompanyCard({ company }) {
   const navigate = useNavigate();

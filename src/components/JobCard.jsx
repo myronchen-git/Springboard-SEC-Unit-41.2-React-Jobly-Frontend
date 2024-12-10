@@ -21,13 +21,13 @@ import './JobCard.css';
  *
  * @param {Object} props - React component properties.
  * @param {Object} props.job - The job to display.
- * @param {Object} props.job.id - ID of the job.
- * @param {Object} props.job.title - Title of the job.
- * @param {Object} props.job.salary - Salary of the job.
- * @param {Object} props.job.equity - Equity of the job.
- * @param {Object} props.job.companyName - Name of the company that the job
+ * @param {String} props.job.id - ID of the job.
+ * @param {String} props.job.title - Title of the job.
+ * @param {Number} props.job.salary - Salary of the job.
+ * @param {Number} props.job.equity - Equity of the job.
+ * @param {String} props.job.companyName - Name of the company that the job
  *   belongs to.
- * @param {Object} props.isApplied - Whether the user has already applied to the
+ * @param {Boolean} props.isApplied - Whether the user has already applied to the
  *   provided job.
  */
 function JobCard({ job, isApplied }) {
