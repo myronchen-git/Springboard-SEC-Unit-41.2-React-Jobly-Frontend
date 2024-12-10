@@ -7,15 +7,17 @@ exports[`JobsPage > matches snapshot. 1`] = `
   >
     bound HTMLFormElement {
       "0": <input
+        class="form-control"
         name="title"
         placeholder="Enter search term..."
         type="search"
         value=""
       />,
       "1": <button
+        class="btn btn-secondary"
         type="submit"
       >
-        Submit
+        Search
       </button>,
     }
     <ul

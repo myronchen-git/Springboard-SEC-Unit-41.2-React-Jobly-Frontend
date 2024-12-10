@@ -49,7 +49,7 @@ describe('CompanyCard', () => {
     );
 
     const searchInput = getByPlaceholderText('Enter search term...');
-    const submitBtn = getByText('Submit');
+    const submitBtn = getByText('Search');
 
     fireEvent.change(searchInput, { target: { value: name } });
 

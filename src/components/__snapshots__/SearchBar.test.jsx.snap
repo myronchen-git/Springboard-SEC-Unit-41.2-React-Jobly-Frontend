@@ -4,15 +4,17 @@ exports[`CompanyCard > matches snapshot. 1`] = `
 <DocumentFragment>
   bound HTMLFormElement {
     "0": <input
+      class="form-control"
       name="name"
       placeholder="Enter search term..."
       type="search"
       value=""
     />,
     "1": <button
+      class="btn btn-secondary"
       type="submit"
     >
-      Submit
+      Search
     </button>,
   }
 </DocumentFragment>

@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Button, Col, Container, Form, Input, Row } from 'reactstrap';
+
+import './SearchBar.css';
 
 // ==================================================
 
@@ -29,16 +32,24 @@ function SearchBar({ retrieveItems, filterName }) {
   }
 
   return (
-    <form className="SearchBar" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        name={filterName}
-        placeholder="Enter search term..."
-        value={formData[filterName]}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <Form className="SearchBar" onSubmit={handleSubmit}>
+      <Container className="p-0" fluid>
+        <Row className="g-3" xs="1" sm="2">
+          <Col sm="9">
+            <Input
+              type="search"
+              name={filterName}
+              placeholder="Enter search term..."
+              value={formData[filterName]}
+              onChange={handleChange}
+            />
+          </Col>
+          <Col sm="3">
+            <Button type="submit">Search</Button>
+          </Col>
+        </Row>
+      </Container>
+    </Form>
   );
 }
 

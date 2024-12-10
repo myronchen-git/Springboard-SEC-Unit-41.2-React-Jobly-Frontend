@@ -232,7 +232,7 @@ describe('App', () => {
 
     // Act
     const searchInput = getByPlaceholderText('Enter search term...');
-    const submitBtn = getByText('Submit');
+    const submitBtn = getByText('Search');
 
     await user.type(searchInput, companies[companyIndexToFilter].name);
     await user.click(submitBtn);
@@ -350,7 +350,7 @@ describe('App', () => {
 
     // Act
     const searchInput = getByPlaceholderText('Enter search term...');
-    const submitBtn = getByText('Submit');
+    const submitBtn = getByText('Search');
 
     await user.type(searchInput, jobs[jobIndexToFilter].title);
     await user.click(submitBtn);
