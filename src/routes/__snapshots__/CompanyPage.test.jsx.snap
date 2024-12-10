@@ -9,10 +9,15 @@ exports[`CompanyPage > matches snapshot. 1`] = `
       class="CompanyPage__info"
     >
       <header>
-        <img
-          alt="Company 1 Logo"
-          src="logo1.png"
-        />
+        <div
+          class="CompanyPage__logo-container"
+        >
+          <img
+            alt="Company 1 Logo"
+            class="CompanyPage__logo"
+            src="logo1.png"
+          />
+        </div>
         <h1>
           Company 1
         </h1>
@@ -25,68 +30,73 @@ exports[`CompanyPage > matches snapshot. 1`] = `
       </p>
     </section>
     <ul
-      class="CompanyPage__jobs"
+      class="CompanyPage__jobs list-unstyled"
     >
       <li>
-        <article
-          class="JobCard"
+        <div
+          class="JobCard card"
         >
-          <header
-            class="JobCard__header"
+          <div
+            class="JobCard__info card-body"
           >
-            <h1>
+            <h4
+              class="card-title"
+            >
               Job 1
-            </h1>
-          </header>
-          <summary
-            class="JobCard__info"
-          >
-            <p>
-              Salary: 1
+            </h4>
+            <p
+              class="card-text"
+            >
+              Salary: $1
             </p>
-            <p>
+            <p
+              class="card-text"
+            >
               Equity: 0.1
             </p>
-          </summary>
+          </div>
           bound HTMLFormElement {
             "0": <button
+              class="btn btn-secondary"
               type="button"
             >
               Apply
             </button>,
           }
-        </article>
+        </div>
       </li>
       <li>
-        <article
-          class="JobCard"
+        <div
+          class="JobCard card"
         >
-          <header
-            class="JobCard__header"
+          <div
+            class="JobCard__info card-body"
           >
-            <h1>
+            <h4
+              class="card-title"
+            >
               Job 2
-            </h1>
-          </header>
-          <summary
-            class="JobCard__info"
-          >
-            <p>
-              Salary: 2
+            </h4>
+            <p
+              class="card-text"
+            >
+              Salary: $2
             </p>
-            <p>
+            <p
+              class="card-text"
+            >
               Equity: 0.2
             </p>
-          </summary>
+          </div>
           bound HTMLFormElement {
             "0": <button
+              class="btn btn-secondary disabled"
               disabled=""
-              type="button"
             >
               Applied
             </button>,
           }
-        </article>
+        </div>
       </li>
     </ul>
   </main>

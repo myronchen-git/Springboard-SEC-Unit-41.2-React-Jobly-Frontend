@@ -1,0 +1,12 @@
+.JobCard .card-body {
+  text-align: left;
+}
+
+.JobCard .card-subtitle {
+  margin-bottom: 1em;
+}
+
+.JobCard__form {
+  padding: 1em;
+  text-align: right;
+}

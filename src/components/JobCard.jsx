@@ -1,7 +1,18 @@
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+  Form,
+} from 'reactstrap';
 
 import { UserContext } from '../contexts.jsx';
+
+import './JobCard.css';
 
 // ==================================================
 
@@ -23,27 +34,29 @@ function JobCard({ job, isApplied }) {
   const { applyToJob } = useContext(UserContext);
 
   return (
-    <article className="JobCard">
-      <header className="JobCard__header">
-        <h1>{job.title}</h1>
-        {job.companyName && <p>{job.companyName}</p>}
-      </header>
-      <summary className="JobCard__info">
-        <p>Salary: {job.salary}</p>
-        <p>Equity: {job.equity}</p>
-      </summary>
-      <form className="JobCard__form">
+    <Card className="JobCard">
+      <CardBody className="JobCard__info">
+        <CardTitle tag="h4">{job.title}</CardTitle>
+        {job.companyName && <CardSubtitle>{job.companyName}</CardSubtitle>}
+        <CardText>
+          Salary:{' '}
+          {job.salary &&
+            job.salary.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              maximumFractionDigits: 0,
+            })}
+        </CardText>
+        <CardText>Equity: {job.equity}</CardText>
+      </CardBody>
+      <Form className="JobCard__form">
         {isApplied ? (
-          <button type="button" disabled>
-            Applied
-          </button>
+          <Button disabled>Applied</Button>
         ) : (
-          <button type="button" onClick={() => applyToJob(job.id)}>
-            Apply
-          </button>
+          <Button onClick={() => applyToJob(job.id)}>Apply</Button>
         )}
-      </form>
-    </article>
+      </Form>
+    </Card>
   );
 }
 

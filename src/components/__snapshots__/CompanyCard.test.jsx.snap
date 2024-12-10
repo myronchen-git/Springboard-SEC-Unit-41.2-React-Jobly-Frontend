@@ -2,30 +2,33 @@
 
 exports[`CompanyCard > matches snapshot. 1`] = `
 <DocumentFragment>
-  <article
-    class="CompanyCard"
+  <div
+    class="CompanyCard card"
   >
-    <header
-      class="CompanyCard__header"
+    <img
+      alt="Company 1 Logo"
+      class="CompanyCard__logo"
+      src="logo1.png"
+    />
+    <div
+      class="CompanyCard__info card-body"
     >
-      <img
-        alt="Company 1 Logo"
-        src="logo1.png"
-      />
-      <h1>
+      <h3
+        class="card-title"
+      >
         Company 1
-      </h1>
-    </header>
-    <summary
-      class="CompanyCard__info"
-    >
-      <p>
+      </h3>
+      <div
+        class="card-subtitle"
+      >
         12 employees
-      </p>
-      <p>
+      </div>
+      <p
+        class="card-text"
+      >
         Company 1 description.
       </p>
-    </summary>
-  </article>
+    </div>
+  </div>
 </DocumentFragment>
 `;

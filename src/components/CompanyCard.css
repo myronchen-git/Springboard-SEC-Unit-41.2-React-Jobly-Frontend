@@ -1,0 +1,24 @@
+.CompanyCard {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.CompanyCard:hover {
+  cursor: pointer;
+  color: var(--bs-link-hover-color);
+}
+
+.CompanyCard .card-body {
+  text-align: left;
+}
+
+.CompanyCard .card-subtitle {
+  font-size: smaller;
+  margin-bottom: 0.5em;
+}
+
+.CompanyCard__logo {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}

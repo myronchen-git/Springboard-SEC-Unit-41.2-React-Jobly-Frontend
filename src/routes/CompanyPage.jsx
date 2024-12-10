@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Alert, List } from 'reactstrap';
 
 import JoblyApi from '../api.js';
 import JobCard from '../components/JobCard.jsx';
 import { UserContext } from '../contexts.jsx';
+
+import './CompanyPage.css';
 
 // ==================================================
 
@@ -30,26 +33,30 @@ function CompanyPage() {
   return (
     <main className="CompanyPage">
       {errorMessage ? (
-        <div className="CompanyPage__error">
-          <p>{errorMessage}</p>
-        </div>
+        <Alert color="danger">{errorMessage}</Alert>
       ) : (
         <>
           <section className="CompanyPage__info">
             <header>
-              <img src={company?.logoUrl} alt={`${company.name} Logo`} />
+              <div className="CompanyPage__logo-container">
+                <img
+                  className="CompanyPage__logo"
+                  src={company?.logoUrl}
+                  alt={`${company.name} Logo`}
+                />
+              </div>
               <h1>{company.name}</h1>
             </header>
             {company.numEmployees && <p>{company.numEmployees} employees</p>}
             <p>{company.description}</p>
           </section>
-          <ul className="CompanyPage__jobs">
+          <List className="CompanyPage__jobs" type="unstyled">
             {jobs.map((job) => (
               <li key={job.id}>
                 <JobCard job={job} isApplied={applications.includes(job.id)} />
               </li>
             ))}
-          </ul>
+          </List>
         </>
       )}
     </main>

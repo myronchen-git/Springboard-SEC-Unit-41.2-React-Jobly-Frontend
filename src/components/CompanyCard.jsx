@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { Card, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
+
+import './CompanyCard.css';
 
 // ==================================================
 
@@ -18,19 +21,23 @@ function CompanyCard({ company }) {
   const navigate = useNavigate();
 
   return (
-    <article
+    <Card
       className="CompanyCard"
       onClick={() => navigate(`/companies/${company.handle}`)}
     >
-      <header className="CompanyCard__header">
-        <img src={company?.logoUrl} alt={`${company.name} Logo`} />
-        <h1>{company.name}</h1>
-      </header>
-      <summary className="CompanyCard__info">
-        {company.numEmployees && <p>{company.numEmployees} employees</p>}
-        <p>{company.description}</p>
-      </summary>
-    </article>
+      <img
+        className="CompanyCard__logo"
+        src={company?.logoUrl}
+        alt={`${company.name} Logo`}
+      />
+      <CardBody className="CompanyCard__info">
+        <CardTitle tag="h3">{company.name}</CardTitle>
+        {company.numEmployees && (
+          <CardSubtitle>{company.numEmployees} employees</CardSubtitle>
+        )}
+        <CardText>{company.description}</CardText>
+      </CardBody>
+    </Card>
   );
 }
 

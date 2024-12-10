@@ -44,7 +44,7 @@ describe('JobCard', () => {
 
     // Assert
     expect(getByText(originalJob.title)).toBeVisible();
-    expect(getByText('Salary: ' + originalJob.salary)).toBeVisible();
+    expect(getByText('Salary: $' + originalJob.salary)).toBeVisible();
     expect(getByText('Equity: ' + originalJob.equity)).toBeVisible();
     expect(getByText(originalJob.companyName)).toBeVisible();
   });
@@ -61,7 +61,7 @@ describe('JobCard', () => {
     // Assert
     expect(getByText(originalJob.title)).toBeVisible();
     expect(
-      queryByText('Salary: ' + originalJob.salary)
+      queryByText('Salary: $' + originalJob.salary)
     ).not.toBeInTheDocument();
     expect(getByText('Equity: ' + originalJob.equity)).toBeVisible();
     expect(getByText(originalJob.companyName)).toBeVisible();
@@ -78,7 +78,7 @@ describe('JobCard', () => {
 
     // Assert
     expect(getByText(originalJob.title)).toBeVisible();
-    expect(getByText('Salary: ' + originalJob.salary)).toBeVisible();
+    expect(getByText('Salary: $' + originalJob.salary)).toBeVisible();
     expect(
       queryByText('Equity: ' + originalJob.equity)
     ).not.toBeInTheDocument();

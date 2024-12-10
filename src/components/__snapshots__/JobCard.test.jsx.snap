@@ -2,36 +2,41 @@
 
 exports[`JobCard > matches snapshot. 1`] = `
 <DocumentFragment>
-  <article
-    class="JobCard"
+  <div
+    class="JobCard card"
   >
-    <header
-      class="JobCard__header"
+    <div
+      class="JobCard__info card-body"
     >
-      <h1>
+      <h4
+        class="card-title"
+      >
         Job 1
-      </h1>
-      <p>
+      </h4>
+      <div
+        class="card-subtitle"
+      >
         Company 1
+      </div>
+      <p
+        class="card-text"
+      >
+        Salary: $1
       </p>
-    </header>
-    <summary
-      class="JobCard__info"
-    >
-      <p>
-        Salary: 1
-      </p>
-      <p>
+      <p
+        class="card-text"
+      >
         Equity: 0.1
       </p>
-    </summary>
+    </div>
     bound HTMLFormElement {
       "0": <button
+        class="btn btn-secondary"
         type="button"
       >
         Apply
       </button>,
     }
-  </article>
+  </div>
 </DocumentFragment>
 `;

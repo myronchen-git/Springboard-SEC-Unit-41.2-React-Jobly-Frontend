@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Alert, List } from 'reactstrap';
 
 import JoblyApi from '../api.js';
 import CompanyCard from '../components/CompanyCard.jsx';
@@ -30,17 +31,15 @@ function CompaniesPage() {
     <main className="CompaniesPage">
       <SearchBar retrieveItems={retrieveCompanies} filterName="name" />
       {errorMessage ? (
-        <div className="CompaniesPage__error">
-          <p>{errorMessage}</p>
-        </div>
+        <Alert color="danger">{errorMessage}</Alert>
       ) : (
-        <ul>
+        <List className="CompaniesPage__companies-list" type="unstyled">
           {companies.map((company) => (
             <li key={company.handle}>
               <CompanyCard company={company} />
             </li>
           ))}
-        </ul>
+        </List>
       )}
     </main>
   );

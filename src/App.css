@@ -31,3 +31,15 @@
   width: 50%;
   min-width: 10em;
 }
+
+.CompaniesPage,
+.CompanyPage,
+.JobsPage {
+  width: 60%; /* causes overflow */
+}
+
+.CompaniesPage__companies-list > li,
+.CompanyPage__jobs > li,
+.JobsPage__companies-list > li {
+  margin: 1em auto;
+}

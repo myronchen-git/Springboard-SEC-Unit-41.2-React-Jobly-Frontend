@@ -1,0 +1,12 @@
+.CompanyPage__info header {
+  margin: 1em auto;
+}
+
+.CompanyPage__logo-container {
+  margin: 1em;
+}
+
+.CompanyPage__logo {
+  height: 100px;
+  width: 100px;
+}
