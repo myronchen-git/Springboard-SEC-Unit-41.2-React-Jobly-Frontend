@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'reactstrap';
 
+import './NavBar.css';
+
 // ==================================================
 
 /**
