@@ -50,6 +50,7 @@ saves users from having to sign back in after leaving the site.
 - React Router
 - axios
 - Reactstrap / Bootstrap
+- React Testing Library
 
 ### Languages
 
