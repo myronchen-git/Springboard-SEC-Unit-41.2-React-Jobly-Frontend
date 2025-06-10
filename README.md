@@ -27,6 +27,8 @@ jobs and allows filtering them by name.  A job can be "applied" to, which simply
 
 - Lists companies and job openings.
 
+  - Can also search by company name and job name.
+
 - User registration.
 
 - Edit profile page.
