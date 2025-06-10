@@ -1,0 +1,10 @@
+{
+  "primary": { "src": "companies_list.png", "alt": "Companies list page" },
+  "all": [
+    { "src": "landing_page.png", "alt": "Landing page" },
+    { "src": "signup_page.png", "alt": "Sign up page" },
+    { "src": "companies_list.png", "alt": "Companies list page" },
+    { "src": "company_page.png", "alt": "Company page" },
+    { "src": "jobs_list.png", "alt": "Jobs list page" }
+  ]
+}
